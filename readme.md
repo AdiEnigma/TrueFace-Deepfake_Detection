@@ -347,5 +347,6 @@ TRUEFACE_RETENTION_DAYS=30
 2. **Start server**: `python main.py`
 3. **Connect WebSocket**: `ws://localhost:8000/ws`
 4. **Send video/audio data**: Use the WebSocket API
-5. **Receive results**: Real-time deepfake detection results#   T r u e F a c e - D e e p f a k e - d e t e c i o n -  
+5. **Receive results**: Real-time deepfake detection results#   T r u e F a c e - D e e p f a k e - d e t e c i o n - 
+ 
  
