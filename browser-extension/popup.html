@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrueFace Controls</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="popup-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <img src="icons/icon32.png" alt="TrueFace" class="logo-icon">
+                <h1>TrueFace</h1>
+            </div>
+            <div class="status-indicator" id="statusIndicator">
+                <span class="status-dot" id="statusDot"></span>
+                <span class="status-text" id="statusText">Checking...</span>
+            </div>
+        </div>
+
+        <!-- Main Controls -->
+        <div class="controls">
+            <!-- Enable/Disable Toggle -->
+            <div class="control-group">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="enableToggle" checked>
+                    <span class="slider"></span>
+                </label>
+                <div class="control-info">
+                    <span class="control-label">Enable Detection</span>
+                    <span class="control-description">Turn on/off deepfake detection</span>
+                </div>
+            </div>
+
+            <!-- Backend Connection -->
+            <div class="control-group">
+                <div class="control-info">
+                    <span class="control-label">Backend Server</span>
+                    <input type="text" id="backendUrl" class="url-input" 
+                           placeholder="ws://localhost:8000/ws" value="ws://localhost:8000/ws">
+                </div>
+            </div>
+
+            <!-- Sensitivity Setting -->
+            <div class="control-group">
+                <div class="control-info">
+                    <span class="control-label">Detection Sensitivity</span>
+                    <select id="sensitivitySelect" class="select-input">
+                        <option value="low">Low - Fewer false positives</option>
+                        <option value="medium" selected>Medium - Balanced</option>
+                        <option value="high">High - More sensitive</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Trust Threshold -->
+            <div class="control-group">
+                <div class="control-info">
+                    <span class="control-label">Trust Threshold: <span id="thresholdValue">70</span>%</span>
+                    <input type="range" id="trustThreshold" class="range-input" 
+                           min="30" max="95" value="70" step="5">
+                    <div class="range-labels">
+                        <span>Lenient</span>
+                        <span>Strict</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Show Overlay Toggle -->
+            <div class="control-group">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="showOverlay" checked>
+                    <span class="slider"></span>
+                </label>
+                <div class="control-info">
+                    <span class="control-label">Show Overlay</span>
+                    <span class="control-description">Display trust scores on video</span>
+                </div>
+            </div>
+
+            <!-- Notifications Toggle -->
+            <div class="control-group">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="notifications" checked>
+                    <span class="slider"></span>
+                </label>
+                <div class="control-info">
+                    <span class="control-label">Notifications</span>
+                    <span class="control-description">Alert on suspicious activity</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats" id="statsSection" style="display: none;">
+            <h3>Session Statistics</h3>
+            <div class="stat-item">
+                <span class="stat-label">Participants Analyzed:</span>
+                <span class="stat-value" id="participantsCount">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Average Trust Score:</span>
+                <span class="stat-value" id="averageTrust">--</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Suspicious Detections:</span>
+                <span class="stat-value" id="suspiciousCount">0</span>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-links">
+                <button id="testConnection" class="btn btn-secondary">Test Connection</button>
+                <button id="resetSettings" class="btn btn-secondary">Reset</button>
+            </div>
+            <div class="version">v1.0.0</div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Connecting...</div>
+        </div>
+    </div>
+
+    <script src="popup_fixed.js"></script>
+</body>
+</html>

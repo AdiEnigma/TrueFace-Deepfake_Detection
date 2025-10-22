@@ -1,0 +1,276 @@
+/* TrueFace Browser Extension - Overlay Styles */
+
+/* Participant overlay for video calls */
+.trueface-participant-overlay {
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    user-select: none !important;
+}
+
+.trueface-trust-indicator {
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+    min-width: 100px !important;
+    text-align: center !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    animation: truefaceSlideIn 0.3s ease-out !important;
+}
+
+.trueface-trust-circle {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+    border: 3px solid #22c55e !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto 8px auto !important;
+    position: relative !important;
+    transition: all 0.3s ease !important;
+}
+
+.trueface-trust-circle::before {
+    content: '' !important;
+    position: absolute !important;
+    top: -3px !important;
+    left: -3px !important;
+    right: -3px !important;
+    bottom: -3px !important;
+    border-radius: 50% !important;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        currentColor 0deg,
+        currentColor var(--progress, 252deg),
+        transparent var(--progress, 252deg),
+        transparent 360deg
+    ) !important;
+    mask: radial-gradient(circle, transparent 50%, black 50%) !important;
+    -webkit-mask: radial-gradient(circle, transparent 50%, black 50%) !important;
+    z-index: -1 !important;
+}
+
+.trueface-trust-percentage {
+    color: white !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+.trueface-trust-label {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    margin-bottom: 4px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.trueface-status {
+    color: white !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Trust level color variations */
+.trueface-trust-circle.trust-high {
+    border-color: #22c55e !important;
+    color: #22c55e !important;
+}
+
+.trueface-trust-circle.trust-medium {
+    border-color: #f59e0b !important;
+    color: #f59e0b !important;
+}
+
+.trueface-trust-circle.trust-low {
+    border-color: #ef4444 !important;
+    color: #ef4444 !important;
+}
+
+.trueface-trust-circle.trust-suspicious {
+    border-color: #dc2626 !important;
+    color: #dc2626 !important;
+    animation: truefacePulse 2s infinite !important;
+}
+
+/* Animations */
+@keyframes truefaceSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes truefacePulse {
+    0%, 100% {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
+    }
+}
+
+/* Compact mode for smaller videos */
+.trueface-participant-overlay.compact {
+    top: 5px !important;
+    right: 5px !important;
+}
+
+.trueface-participant-overlay.compact .trueface-trust-indicator {
+    padding: 8px !important;
+    min-width: 80px !important;
+}
+
+.trueface-participant-overlay.compact .trueface-trust-circle {
+    width: 40px !important;
+    height: 40px !important;
+    margin-bottom: 6px !important;
+}
+
+.trueface-participant-overlay.compact .trueface-trust-percentage {
+    font-size: 12px !important;
+}
+
+.trueface-participant-overlay.compact .trueface-trust-label {
+    font-size: 10px !important;
+}
+
+.trueface-participant-overlay.compact .trueface-status {
+    font-size: 11px !important;
+}
+
+/* Hide overlay when disabled */
+.trueface-participant-overlay.hidden {
+    display: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .trueface-participant-overlay {
+        top: 5px !important;
+        right: 5px !important;
+    }
+    
+    .trueface-trust-indicator {
+        padding: 8px !important;
+        min-width: 80px !important;
+    }
+    
+    .trueface-trust-circle {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    .trueface-trust-percentage {
+        font-size: 12px !important;
+    }
+}
+
+/* Platform-specific adjustments */
+
+/* Google Meet */
+[data-allocation-index] .trueface-participant-overlay,
+.KV2jpe .trueface-participant-overlay {
+    top: 8px !important;
+    right: 8px !important;
+}
+
+/* Zoom */
+.video-container .trueface-participant-overlay,
+.participant-video .trueface-participant-overlay {
+    top: 10px !important;
+    right: 10px !important;
+}
+
+/* Microsoft Teams */
+.video-stream .trueface-participant-overlay,
+.participant-video-container .trueface-participant-overlay {
+    top: 12px !important;
+    right: 12px !important;
+}
+
+/* WebEx */
+.remote-video .trueface-participant-overlay,
+.video-avatar .trueface-participant-overlay {
+    top: 10px !important;
+    right: 10px !important;
+}
+
+/* Ensure overlay stays above video controls */
+.trueface-participant-overlay {
+    z-index: 999999 !important;
+}
+
+/* Loading state */
+.trueface-trust-indicator.loading .trueface-trust-circle {
+    border-color: #64748b !important;
+    animation: truefaceRotate 1s linear infinite !important;
+}
+
+.trueface-trust-indicator.loading .trueface-trust-percentage {
+    color: #64748b !important;
+}
+
+@keyframes truefaceRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Error state */
+.trueface-trust-indicator.error {
+    border-color: #ef4444 !important;
+}
+
+.trueface-trust-indicator.error .trueface-trust-circle {
+    border-color: #ef4444 !important;
+}
+
+.trueface-trust-indicator.error .trueface-status {
+    color: #fca5a5 !important;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    .trueface-participant-overlay,
+    .trueface-trust-circle,
+    .trueface-trust-indicator {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .trueface-trust-indicator {
+        background: rgba(0, 0, 0, 0.95) !important;
+        border: 2px solid white !important;
+    }
+    
+    .trueface-trust-percentage,
+    .trueface-status {
+        color: white !important;
+        text-shadow: none !important;
+    }
+    
+    .trueface-trust-label {
+        color: white !important;
+    }
+}
